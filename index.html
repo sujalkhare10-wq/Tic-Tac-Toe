@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe – Classic Reimagined</title>
+  <meta name="description" content="A beautifully designed Tic Tac Toe game with smooth animations, score tracking, and a premium dark UI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="logo">Tic<span>Tac</span>Toe</h1>
+      <p class="tagline">Classic Reimagined</p>
+    </header>
+
+    <!-- Score Board -->
+    <div class="scoreboard" id="scoreboard">
+      <div class="score-card" id="score-x">
+        <div class="score-symbol x-symbol">✕</div>
+        <div class="score-info">
+          <span class="score-label">Player X</span>
+          <span class="score-value" id="x-score">0</span>
+        </div>
+      </div>
+
+      <div class="score-card draw-card" id="score-draw">
+        <div class="score-symbol draw-symbol">–</div>
+        <div class="score-info">
+          <span class="score-label">Draws</span>
+          <span class="score-value" id="draw-score">0</span>
+        </div>
+      </div>
+
+      <div class="score-card" id="score-o">
+        <div class="score-symbol o-symbol">○</div>
+        <div class="score-info">
+          <span class="score-label">Player O</span>
+          <span class="score-value" id="o-score">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="status-indicator" id="status-indicator">
+        <div class="turn-badge" id="turn-badge">
+          <span class="turn-symbol" id="turn-symbol">✕</span>
+        </div>
+        <p class="status-text" id="status-text">Player X's turn</p>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div class="board-wrapper">
+      <div class="board" id="board" role="grid" aria-label="Tic Tac Toe board">
+        <button class="cell" id="cell-0" data-index="0" aria-label="Cell 1" role="gridcell"></button>
+        <button class="cell" id="cell-1" data-index="1" aria-label="Cell 2" role="gridcell"></button>
+        <button class="cell" id="cell-2" data-index="2" aria-label="Cell 3" role="gridcell"></button>
+        <button class="cell" id="cell-3" data-index="3" aria-label="Cell 4" role="gridcell"></button>
+        <button class="cell" id="cell-4" data-index="4" aria-label="Cell 5" role="gridcell"></button>
+        <button class="cell" id="cell-5" data-index="5" aria-label="Cell 6" role="gridcell"></button>
+        <button class="cell" id="cell-6" data-index="6" aria-label="Cell 7" role="gridcell"></button>
+        <button class="cell" id="cell-7" data-index="7" aria-label="Cell 8" role="gridcell"></button>
+        <button class="cell" id="cell-8" data-index="8" aria-label="Cell 9" role="gridcell"></button>
+      </div>
+
+      <!-- Win line overlay -->
+      <svg class="win-line-svg" id="win-line-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <line id="win-line" x1="0" y1="0" x2="0" y2="0" />
+      </svg>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions">
+      <button class="btn btn-primary" id="restart-btn" aria-label="Restart game">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        New Round
+      </button>
+      <button class="btn btn-secondary" id="reset-score-btn" aria-label="Reset scores">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        Reset Scores
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Result Overlay -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="result-title">
+    <div class="result-card" id="result-card">
+      <div class="result-icon" id="result-icon"></div>
+      <h2 class="result-title" id="result-title">Player X Wins!</h2>
+      <p class="result-sub" id="result-sub">Congratulations on the victory!</p>
+      <div class="result-actions">
+        <button class="btn btn-primary" id="play-again-btn">Play Again</button>
+        <button class="btn btn-ghost" id="close-overlay-btn">View Board</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
